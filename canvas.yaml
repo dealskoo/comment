@@ -1,0 +1,27 @@
+preset: package
+
+namespace: Dealskoo\Comment
+user-auth-provider: App\User
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: ''
+
+console:
+  namespace: Dealskoo\Comment\Console
+
+model:
+  namespace: Dealskoo\Comment\Models
+
+provider:
+  namespace: Dealskoo\Comment\Providers
+
+testing:
+  namespace: Dealskoo\Comment\Tests
