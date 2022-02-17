@@ -20,8 +20,8 @@ trait Commentable
     {
         $comment = new Comment();
         $comment->fill([
-            'commenter_id' => $commenter->getKey(),
-            'commenter_type' => $commenter->getMorphClass(),
+            'commenter_id' => $commenter ? $commenter->getKey() : null,
+            'commenter_type' => $commenter ? $commenter->getMorphClass() : null,
             'guest_name' => $guest_name,
             'guest_email' => $guest_email,
             'score' => $score,

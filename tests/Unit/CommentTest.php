@@ -74,4 +74,19 @@ class CommentTest extends TestCase
         $comment->save();
         $this->assertCount(1, $user->comments()->approved()->get());
     }
+
+    public function test_guest_comment()
+    {
+        $post = Post::create(['title' => 'post']);
+        $comment = Comment::factory()->make();
+        $guest_name = 'test';
+        $guest_email = 'test@test.com';
+        $post->comment(null, $comment->comment, $comment->score, null, $guest_name, $guest_email);
+        $comment = $post->comments()->first();
+        $this->assertNull($comment->commenter);
+        $this->assertEquals($guest_name, $comment->guest_name);
+        $this->assertEquals($guest_email, $comment->guest_email);
+        $this->assertTrue($comment->isGuestComment());
+        $this->assertTrue($comment->is_guest_comment);
+    }
 }

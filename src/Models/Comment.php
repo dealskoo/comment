@@ -14,6 +14,8 @@ class Comment extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $appends = ['is_guest_comment'];
+
     protected $fillable = [
         'commenter_id',
         'commenter_type',
@@ -64,5 +66,15 @@ class Comment extends Model
     public function scopeApproved(Builder $builder)
     {
         return $builder->where('approved', true);
+    }
+
+    public function getIsGuestCommentAttribute()
+    {
+        return $this->isGuestComment();
+    }
+
+    public function isGuestComment()
+    {
+        return $this->commenter == null;
     }
 }
