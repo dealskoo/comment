@@ -13,4 +13,29 @@ class CommentControllerTest extends TestCase
     {
 
     }
+
+    public function test_table()
+    {
+
+    }
+
+    public function test_edit()
+    {
+
+    }
+
+    public function test_update()
+    {
+
+    }
+
+    public function test_show()
+    {
+
+    }
+
+    public function test_destroy()
+    {
+
+    }
 }
