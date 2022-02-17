@@ -22,7 +22,12 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'guest_name' => $this->faker->name,
+            'guest_email' => $this->faker->email,
+            'score' => $this->faker->numberBetween(0, 5),
+            'comment' => $this->faker->text,
+            'approved' => $this->faker->boolean,
+            'parent_id' => null
         ];
     }
 }
