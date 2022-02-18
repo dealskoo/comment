@@ -30,6 +30,10 @@ class CommentServiceProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
             $this->publishes([
+                __DIR__ . '/../../config/comment.php' => config_path('comment.php')
+            ], 'config');
+
+            $this->publishes([
                 __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/comment')
             ], 'lang');
         }
