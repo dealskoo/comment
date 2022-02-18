@@ -30,7 +30,7 @@ class Comment extends Model
     ];
 
     protected $casts = [
-        'approved'
+        'approved' => 'boolean'
     ];
 
     protected $dispatchesEvents = [
