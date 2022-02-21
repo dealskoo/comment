@@ -98,14 +98,13 @@ class CommentController extends AdminController
         $request->validate([
             'score' => ['required', 'digits_between:0,' . config('comment.max_score')],
             'comment' => ['required'],
-            'approved' => ['required', 'boolean'],
         ]);
         $comment = Comment::query()->findOrFail($id);
         $comment->fill($request->only([
             'score',
             'comment',
-            'approved',
         ]));
+        $comment->approved = $request->boolean('approved', false);
         $comment->save();
         return back()->with('success', __('admin::admin.update_success'));
     }
