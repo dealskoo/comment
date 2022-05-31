@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 
 class Comment extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Searchable;
 
     protected $appends = ['is_guest_comment'];
 
@@ -76,5 +77,20 @@ class Comment extends Model
     public function isGuestComment()
     {
         return $this->commenter == null;
+    }
+
+    public function shouldBeSearchable()
+    {
+        return $this->approved;
+    }
+
+    public function toSearchableArray()
+    {
+        return $this->only([
+            'guest_name',
+            'guest_email',
+            'score',
+            'comment'
+        ]);
     }
 }
