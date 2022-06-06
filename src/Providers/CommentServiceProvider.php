@@ -46,7 +46,7 @@ class CommentServiceProvider extends ServiceProvider
 
         AdminMenu::route('admin.comments.index', 'comment::comment.comments', [], ['icon' => 'uil-comment', 'permission' => 'comments.index'])->order(9);
 
-        PermissionManager::add(new Permission('comments.index', 'Comment Lists'));
+        PermissionManager::add(new Permission('comments.index', 'Comment List'));
         PermissionManager::add(new Permission('comments.show', 'View Comment'), 'comments.index');
         PermissionManager::add(new Permission('comments.edit', 'Edit Comment'), 'comments.index');
         PermissionManager::add(new Permission('comments.destroy', 'Destroy Comment'), 'comments.index');
