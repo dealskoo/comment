@@ -2,7 +2,6 @@
 
 namespace Dealskoo\Comment\Http\Controllers\Admin;
 
-use Carbon\Carbon;
 use Dealskoo\Admin\Http\Controllers\Controller as AdminController;
 use Dealskoo\Comment\Models\Comment;
 use Illuminate\Http\Request;
@@ -52,8 +51,8 @@ class CommentController extends AdminController
             $row[] = $comment->score;
             $row[] = $comment->approved;
             $row[] = $comment->parent_id;
-            $row[] = Carbon::parse($comment->created_at)->format('Y-m-d H:i:s');
-            $row[] = Carbon::parse($comment->updated_at)->format('Y-m-d H:i:s');
+            $row[] = $comment->created_at->format('Y-m-d H:i:s');
+            $row[] = $comment->updated_at->format('Y-m-d H:i:s');
             $view_link = '';
             if ($can_view) {
                 $view_link = '<a href="' . route('admin.comments.show', $comment) . '" class="action-icon"><i class="mdi mdi-eye"></i></a>';
